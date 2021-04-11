@@ -40,7 +40,10 @@ class DeviceBroadcaster(object):
     def broadcast(self):
         if not self.exit_flag:
             # broadcast the message
-            self.socket.sendto(self.broadcast_message, ("<broadcast>", 2000))
-            # restart the timer
-            self.bcast_timer = Timer(5, self.broadcast)
-            self.bcast_timer.start()
+            try:
+                self.socket.sendto(self.broadcast_message, ("<broadcast>", 2000))
+                # restart the timer
+                self.bcast_timer = Timer(5, self.broadcast)
+                self.bcast_timer.start()
+            except Exception as err:
+                print("Failed to broadcast device data", err)
