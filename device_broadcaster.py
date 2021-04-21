@@ -8,14 +8,14 @@ device_ident_opcode = 0
 
 class DeviceBroadcaster(object):
 
-    def __init__(self, uuid: bytes, strips: List[LightStateManager], socket: socket.socket):
+    def __init__(self, uuid: str, strips: List[LightStateManager], socket: socket.socket):
         self.socket = socket
         self.init_socket()
         self.exit_flag = False
 
         self.broadcast_message = struct.pack(
             "!16sIII",
-            uuid,
+            uuid.encode("utf-8"),
             device_ident_opcode,
             0,
             len(strips)*3

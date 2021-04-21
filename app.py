@@ -7,7 +7,7 @@ import queue
 
 # initialize any objects
 strip1 = LightStateManager(20)
-broadcaster = DeviceBroadcaster(uuid.uuid4().bytes, [strip1], None)
+broadcaster = DeviceBroadcaster(str(uuid.uuid4()), [strip1], None)
 
 input_queue = queue.Queue()
 network_input_stream = NetworkInputStream(None, input_queue)
