@@ -1,8 +1,8 @@
-from light_state_manager import LightStateManager
+from zenlightsim.light_state_manager import LightStateManager
 from queue import Queue, Empty
-from message_parser import ZenLightMessageParser, ZenLightUpdateLightData
+from zenlightsim.message_parser import ZenLightMessageParser, ZenLightUpdateLightData
 from typing import List
-from light_state_manager import LightStateManager
+from zenlightsim.light_state_manager import LightStateManager
 from threading import Thread
 
 class LightInputStreamConnector(Thread):
@@ -23,7 +23,7 @@ class LightInputStreamConnector(Thread):
     def consumer_input(self):
         while not self.exit_flag:
             try:
-                message = self.input_queue.get(1)
+                topic, message = self.input_queue.get(1)
                 # parse message
                 message_data = ZenLightMessageParser.parse_raw_message(message)
                 if message_data.opcode == 0:

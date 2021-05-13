@@ -2,7 +2,7 @@ from typing import List
 import struct
 import socket
 from threading import Timer
-from light_state_manager import LightStateManager
+from zenlightsim.light_state_manager import LightStateManager
 
 device_ident_opcode = 0
 
