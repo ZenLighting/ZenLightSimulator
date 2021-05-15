@@ -17,7 +17,7 @@ class MQTTRegistry(Thread):
         while True:
             # create mqtt message
             message = {
-                "identifier": self.dId,
+                "dId": self.dId,
                 "type": "light",
                 "data": {
                     "state": self.state._light_array

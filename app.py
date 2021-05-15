@@ -23,7 +23,7 @@ mp.set_start_method('spawn')
 # initialize any objects
 mqtt_client = LightMQTTClient("Sim1", "localhost")
 
-strip1 = LightStateManager(20)
+strip1 = LightStateManager(20, "Sim1")
 strip1_manager = LightInputStreamConnector([strip1], mqtt_client.queue)
 mqtt_registry = MQTTRegistry(strip1, mqtt_client.client)
 

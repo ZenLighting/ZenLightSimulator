@@ -14,8 +14,10 @@ class LightInputStreamConnector(Thread):
         self.light_state_manager_id_map = {}
         self.exit_flag = False
 
+        count = 0
         for light_manager in self.light_state_managers:
-            self.light_state_manager_id_map[light_manager.ident] = light_manager
+            self.light_state_manager_id_map[count] = light_manager
+            count += 1
     
     def run(self):
         self.consumer_input()
